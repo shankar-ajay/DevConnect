@@ -77,7 +77,7 @@ export default function QuestionsPage() {
     if (sortQ !== 'newest') p.set('sort', sortQ);
     p.set('page', '1');
     setSearchParams(p, { replace: true });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [debouncedSearch, sortQ, tagQ]);
 
   const updateParam = (key, value) => {

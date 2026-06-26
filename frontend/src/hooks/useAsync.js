@@ -19,7 +19,7 @@ export function useAsync(fn, deps = []) {
     } finally {
       setLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, deps);
 
   useEffect(() => { execute(); }, [execute]);
@@ -56,7 +56,6 @@ export function usePagination(fetchFn, params = {}, deps = []) {
     } finally {
       setLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   useEffect(() => { fetch(1); }, [fetch]);
