@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary:    #ffffff;
+    --bg-secondary:  #f6f6f6;
+    --bg-tertiary:   #eff0f1;
+    --text-primary:  #242729;
+    --text-secondary:#6a737c;
+    --text-muted:    #9199a1;
+    --border:        #d6d9dc;
+    --border-light:  #e4e6e8;
+    --brand:         #f97316;
+    --brand-hover:   #ea580c;
+    --link:          #0077cc;
+    --link-hover:    #0095ff;
+    --success:       #2e7d32;
+    --danger:        #c62828;
+    --warning:       #ef6c00;
+    --accepted:      #2e7d32;
+    --code-bg:       #eff0f1;
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md:     0 4px 12px rgba(0,0,0,0.10);
+  }
+
+  .dark {
+    --bg-primary:    #1b1b1b;
+    --bg-secondary:  #242424;
+    --bg-tertiary:   #2d2d2d;
+    --text-primary:  #e7e8eb;
+    --text-secondary:#a4a8ad;
+    --text-muted:    #6a737c;
+    --border:        #3c4147;
+    --border-light:  #343a40;
+    --brand:         #fb923c;
+    --brand-hover:   #f97316;
+    --link:          #4fc3f7;
+    --link-hover:    #81d4fa;
+    --success:       #66bb6a;
+    --danger:        #ef5350;
+    --warning:       #ffa726;
+    --accepted:      #66bb6a;
+    --code-bg:       #2d2d2d;
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.30);
+    --shadow-md:     0 4px 12px rgba(0,0,0,0.40);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--link-hover); }
+
+  code, pre {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border-radius: 4px;
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+}
+
+@layer components {
+  /* ── Card ─────────────────────────────────────────────────────── */
+  .card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-sm font-medium rounded cursor-pointer transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-1;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    @apply btn;
+    background: var(--brand);
+    color: white;
+    border-color: var(--brand);
+  }
+  .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+
+  .btn-secondary {
+    @apply btn;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover { background: var(--border); }
+
+  .btn-outline {
+    @apply btn;
+    background: transparent;
+    color: var(--brand);
+    border-color: var(--brand);
+  }
+  .btn-outline:hover { background: var(--brand); color: white; }
+
+  .btn-danger {
+    @apply btn;
+    background: var(--danger);
+    color: white;
+  }
+  .btn-danger:hover { opacity: 0.9; }
+
+  .btn-ghost {
+    @apply btn;
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+
+  /* ── Form fields ─────────────────────────────────────────────── */
+  .form-input {
+    @apply w-full px-3 py-2 text-sm rounded border transition-colors duration-150 focus:outline-none focus:ring-2;
+    background: var(--bg-primary);
+    border-color: var(--border);
+    color: var(--text-primary);
+    focus-ring-color: var(--brand);
+  }
+  .form-input:focus { border-color: var(--brand); }
+
+  .form-label {
+    @apply block text-sm font-semibold mb-1;
+    color: var(--text-primary);
+  }
+
+  .form-error {
+    @apply text-xs mt-1;
+    color: var(--danger);
+  }
+
+  /* ── Vote control ────────────────────────────────────────────── */
+  .vote-btn {
+    @apply flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-150 cursor-pointer;
+    border-color: var(--border);
+    color: var(--text-muted);
+  }
+  .vote-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .vote-btn.active-up   { background: var(--brand); border-color: var(--brand); color: white; }
+  .vote-btn.active-down { background: var(--danger); border-color: var(--danger); color: white; }
+
+  /* ── Tag pill ────────────────────────────────────────────────── */
+  .tag-pill {
+    @apply inline-flex items-center px-2 py-0.5 text-xs rounded font-medium transition-colors;
+    background: #e1ecf4;
+    color: #39739d;
+  }
+  .tag-pill:hover { background: #d0e3f1; color: #2c5f7a; }
+  .dark .tag-pill { background: #1e3a4f; color: #7ec8e3; }
+  .dark .tag-pill:hover { background: #254d65; }
+
+  /* ── User card ───────────────────────────────────────────────── */
+  .user-chip {
+    @apply inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs;
+    background: var(--bg-secondary);
+  }
+
+  /* ── Alert banners ───────────────────────────────────────────── */
+  .alert { @apply flex items-start gap-3 p-4 rounded border text-sm; }
+  .alert-success { background: #e8f5e9; border-color: #66bb6a; color: #1b5e20; }
+  .alert-error   { background: #ffebee; border-color: #ef5350; color: #b71c1c; }
+  .alert-warning { background: #fff3e0; border-color: #ffa726; color: #e65100; }
+  .dark .alert-success { background: #1a3a1f; color: #a5d6a7; }
+  .dark .alert-error   { background: #3b1a1a; color: #ef9a9a; }
+  .dark .alert-warning { background: #3b2a0a; color: #ffcc80; }
+
+  /* ── Skeleton loader ─────────────────────────────────────────── */
+  .skeleton {
+    @apply animate-pulse rounded;
+    background: var(--bg-tertiary);
+  }
+
+  /* ── Nav link ────────────────────────────────────────────────── */
+  .nav-link {
+    @apply px-3 py-2 text-sm rounded font-medium transition-colors;
+    color: var(--text-secondary);
+  }
+  .nav-link:hover, .nav-link.active {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  /* ── Sidebar section ─────────────────────────────────────────── */
+  .sidebar-section {
+    @apply card p-4 mb-4;
+  }
+  .sidebar-title {
+    @apply text-sm font-semibold mb-3 pb-2 border-b;
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+}

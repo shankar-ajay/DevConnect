@@ -1,0 +1,107 @@
+# =========================
+
+# OS Files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# Python Backend
+
+# =========================
+
+backend/venv/
+backend/.venv/
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environment Variables
+
+.env
+.env.*
+!.env.example
+
+# Alembic
+
+alembic/versions/*.pyc
+
+# Logs
+
+*.log
+
+# =========================
+
+# React Frontend
+
+# =========================
+
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Environment Variables
+
+frontend/.env
+frontend/.env.*
+
+# =========================
+
+# IDE
+
+# =========================
+
+.vscode/
+.idea/
+
+# =========================
+
+# GitHub Actions
+
+# =========================
+
+.github/*.local
+
+# =========================
+
+# Temporary Files
+
+# =========================
+
+*.tmp
+*.temp
+
+# =========================
+
+# Uploads
+
+# =========================
+
+uploads/
+media/
+
+# =========================
+
+# JSON Files To Ignore
+
+# =========================
+
+GoogleOAuthSecrets.json
+
+# Or ignore all JSON files in a folder:
+
+# data/*.json
+
+# Or a specific config file:
+
+# config/secrets.json
