@@ -114,7 +114,7 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
           <div className="w-8 h-8 rounded flex items-center justify-center font-bold text-white text-sm" style={{ background: 'var(--brand)' }}>
-            SO
+            DC
           </div>
           <span className="text-base font-bold hidden sm:block" style={{ color: 'var(--text-primary)' }}>
             Dev<span style={{ color: 'var(--brand)' }}>Connect</span>
