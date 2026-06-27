@@ -37,7 +37,8 @@ from app.schemas.user import UserPrivate
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
-FRONTEND_URL = "http://localhost:3000"
+#FRONTEND_URL = "http://localhost:3000"
+FRONTEND_URL = settings.FRONTEND_URL
 
 
 # ─── Helper ──────────────────────────────────────────────────────────────────
