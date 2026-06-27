@@ -122,7 +122,7 @@ export default function Header() {
           </span>
         </Link> */}
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <img src={logo} alt="DevConnect" className="h-8 w-auto" />
+          <img src={logo} alt="DevConnect" className="h-12 w-auto" />
         </Link>
 
         {/* Search */}
