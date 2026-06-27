@@ -37,6 +37,7 @@ class Settings(BaseSettings):
 
     # ── CORS ─────────────────────────────────────────────────────────────────
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    FRONTEND_URL: str = "https://dev-connect-cyan-chi.vercel.app"
 
     @field_validator("CORS_ORIGINS", mode="before")
     @classmethod
