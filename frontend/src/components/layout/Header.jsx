@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import useAuthStore from '../../context/authStore';
 import { avatarUrl } from '../../utils/helpers';
+import logo from '../../assets/logo.svg';
 
 function SunIcon() {
   return (
@@ -112,13 +113,16 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b" style={{ background: 'var(--bg-primary)', borderColor: 'var(--border)', boxShadow: 'var(--shadow-sm)' }}>
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center gap-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+        {/* <Link to="/" className="flex items-center gap-2 flex-shrink-0">
           <div className="w-8 h-8 rounded flex items-center justify-center font-bold text-white text-sm" style={{ background: 'var(--brand)' }}>
             DC
           </div>
           <span className="text-base font-bold hidden sm:block" style={{ color: 'var(--text-primary)' }}>
             Dev<span style={{ color: 'var(--brand)' }}>Connect</span>
           </span>
+        </Link> */}
+        <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+          <img src={logo} alt="DevConnect" className="h-8 w-auto" />
         </Link>
 
         {/* Search */}

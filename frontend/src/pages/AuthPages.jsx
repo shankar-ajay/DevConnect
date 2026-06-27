@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../context/authStore';
 import { authAPI } from '../api/client';
 import { extractErrorMessage } from '../utils/helpers';
+import logo from '../assets/logo.svg';
 
 function OAuthButtons({ mode }) {
   const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
@@ -58,9 +59,10 @@ export function LoginPage() {
     <div className="min-h-screen flex" style={{ background: 'var(--bg-secondary)' }}>
       {/* Left decorative panel */}
       <div className="hidden lg:flex lg:w-96 flex-col justify-center px-12" style={{ background: 'var(--bg-primary)' }}>
-        <div className="w-10 h-10 rounded flex items-center justify-center font-bold text-white mb-6" style={{ background: 'var(--brand)' }}>
+        {/* <div className="w-10 h-10 rounded flex items-center justify-center font-bold text-white mb-6" style={{ background: 'var(--brand)' }}>
           SO
-        </div>
+        </div> */}
+        <img src={logo} alt="DevConnect" className="h-10 w-auto" />
         <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Join the community of developers
         </h2>
@@ -137,7 +139,8 @@ export function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center px-4" style={{ background: 'var(--bg-secondary)' }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded mx-auto flex items-center justify-center font-bold text-white text-lg mb-3" style={{ background: 'var(--brand)' }}>SO</div>
+         {/* <div className="w-12 h-12 rounded mx-auto flex items-center justify-center font-bold text-white text-lg mb-3" style={{ background: 'var(--brand)' }}>SO</div>*/}
+         <img src={logo} alt="DevConnect" className="h-10 w-auto" />
           <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Create your account</h1>
         </div>
 
