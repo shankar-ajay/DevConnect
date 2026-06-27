@@ -62,7 +62,7 @@ export function LoginPage() {
         {/* <div className="w-10 h-10 rounded flex items-center justify-center font-bold text-white mb-6" style={{ background: 'var(--brand)' }}>
           SO
         </div> */}
-        <img src={logo} alt="DevConnect" className="h-10 w-auto" />
+        <img src={logo} alt="DevConnect" className="h-20 w-auto" />
         <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
           Join the community of developers
         </h2>
@@ -140,7 +140,7 @@ export function RegisterPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
          {/* <div className="w-12 h-12 rounded mx-auto flex items-center justify-center font-bold text-white text-lg mb-3" style={{ background: 'var(--brand)' }}>SO</div>*/}
-         <img src={logo} alt="DevConnect" className="h-10 w-auto" />
+         <img src={logo} alt="DevConnect" className="h-20 w-auto" />
           <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>Create your account</h1>
         </div>
 
