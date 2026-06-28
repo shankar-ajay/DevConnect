@@ -8,6 +8,7 @@ import { TagPill, UserChip, LoadingCenter, ErrorBanner } from '../components/com
 import { questionsAPI, answersAPI, commentsAPI } from '../api/client';
 import useAuthStore from '../context/authStore';
 import { timeAgo, formatDateFull, extractErrorMessage } from '../utils/helpers';
+import AIAnswerBox from '../components/common/AIAnswerBox';
 
 // ── Comment ───────────────────────────────────────────────────────────────
 
@@ -298,6 +299,9 @@ export default function QuestionDetailPage() {
             </div>
           </div>
         </div>
+
+        {/* AI Answer Box */}
+        <AIAnswerBox questionTitle={question.title} questionBody={question.body} />
 
         {/* Answers */}
         <div className="mt-8">

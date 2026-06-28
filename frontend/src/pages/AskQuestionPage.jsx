@@ -4,6 +4,7 @@ import Layout from '../components/layout/Layout';
 import MarkdownEditor from '../components/common/MarkdownEditor';
 import { questionsAPI } from '../api/client';
 import { extractErrorMessage } from '../utils/helpers';
+import { suggestTags } from '../api/groq';
 
 function TagInput({ tags, setTags }) {
   const [input, setInput] = useState('');
@@ -56,6 +57,27 @@ export default function AskQuestionPage() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [suggestingTags, setSuggestingTags] = useState(false);
+  const [tagSuggestError, setTagSuggestError] = useState('');
+
+  const handleSuggestTags = async () => {
+    setSuggestingTags(true);
+    setTagSuggestError('');
+    try {
+      const suggested = await suggestTags(form.title, form.body);
+      if (suggested.length === 0) {
+        setTagSuggestError('No tags suggested. Try adding more detail to your title.');
+        return;
+      }
+      // Merge with existing tags, no duplicates, max 5
+      const merged = [...new Set([...form.tags, ...suggested])].slice(0, 5);
+      setForm((f) => ({ ...f, tags: merged }));
+    } catch (err) {
+      setTagSuggestError('AI tag suggestion failed. Check your Gemini API key.');
+    } finally {
+      setSuggestingTags(false);
+    }
+  };
 
   const validate = () => {
     const e = {};
@@ -140,10 +162,34 @@ export default function AskQuestionPage() {
 
           {/* Tags */}
           <div className="card p-5">
-            <label className="form-label text-base mb-1">Tags</label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="form-label text-base mb-0">Tags</label>
+              <button
+                type="button"
+                onClick={handleSuggestTags}
+                disabled={suggestingTags || !form.title || form.title.trim().length < 10}
+                className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md font-medium transition-all"
+                style={{
+                  background: suggestingTags ? 'var(--bg-tertiary)' : 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color: suggestingTags ? 'var(--text-muted)' : 'white',
+                  border: 'none',
+                  opacity: (!form.title || form.title.trim().length < 10) ? 0.5 : 1,
+                  cursor: (!form.title || form.title.trim().length < 10) ? 'not-allowed' : 'pointer',
+                }}
+                title={!form.title || form.title.trim().length < 10 ? 'Enter a title first' : 'Let AI suggest tags'}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-3.5 h-3.5">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                </svg>
+                {suggestingTags ? 'Suggesting…' : 'AI Suggest Tags'}
+              </button>
+            </div>
             <p className="text-xs mb-2" style={{ color: 'var(--text-muted)' }}>
               Add up to 5 tags to describe what your question is about. Press Enter or comma to add.
             </p>
+            {tagSuggestError && (
+              <p className="text-xs mb-2" style={{ color: 'var(--danger)' }}>{tagSuggestError}</p>
+            )}
             <TagInput tags={form.tags} setTags={(t) => setForm({ ...form, tags: t })} />
             {errors.tags && <p className="form-error">{errors.tags}</p>}
           </div>
